@@ -13,7 +13,7 @@ import path from "path";
 
 const app = express();
 
-const productionOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_1]
+const productionOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_1, process.env.ORIGIN_3]
 const devOrigin = ["http://localhost:5173",]
 const allowedOrigin = process.env.NODE_ENV === 'production' ? productionOrigins : devOrigin
 
@@ -23,10 +23,9 @@ app.use(cors({
       console.log(origin, allowedOrigin)
       callback(null, true)
     }else{
-      callback(new Error("Not allowed by CORS"))
+      callback(new Error(`Not allowed by CORS ${origin}`))
     }
   },
-  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 }));
 app.use(express.json());
@@ -37,7 +36,7 @@ app.use('/user', userRoute);
 app.use('/message', messageRoute)
 app.use('/chat', chatRoute)
 app.use('/', (req, res) => {
-  res.json('working')
+  res.json(`working`)
 })
 
 

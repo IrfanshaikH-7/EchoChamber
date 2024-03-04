@@ -7,17 +7,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/user': {
-        target: 'http://localhost:3000',
+        target: process.env.SERVER_URL,
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/chat': {
-        target: 'http://localhost:3000',
+        target:  process.env.SERVER_URL,
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/message': {
-        target: 'http://localhost:3000',
+        target:  process.env.SERVER_URL,
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },

@@ -5,7 +5,7 @@ import { parseCookies, setCookie } from "nookies";
 
 function Register() {
   const [loading, setLoading] = useState(false);
-  const apiEndpoint = "http://localhost:3000/";
+  // const apiEndpoint = "http://localhost:3000/";
 
   const cookie = parseCookies();
   const userId = cookie["userId"];

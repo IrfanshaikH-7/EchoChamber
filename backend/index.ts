@@ -17,17 +17,7 @@ const productionOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_1, process.e
 const devOrigin = ["http://localhost:5173",]
 const allowedOrigin = process.env.NODE_ENV === 'production' ? productionOrigins : devOrigin
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if(allowedOrigin.includes(origin)){
-      console.log(origin, allowedOrigin)
-      callback(null, true)
-    }else{
-      callback(new Error(`Not allowed by CORS ${origin}`))
-    }
-  },
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
+app.use(cors());
 app.use(express.json());
 const PORT = 3000;
 

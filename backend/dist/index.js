@@ -13,6 +13,9 @@ require("dotenv/config");
 const socket_io_1 = require("socket.io");
 const socketService_1 = __importDefault(require("./socket/socketService"));
 const app = (0, express_1.default)();
+const productionOrigins = [process.env.ORIGIN_1, process.env.ORIGIN_1, process.env.ORIGIN_3];
+const devOrigin = ["http://localhost:5173",];
+const allowedOrigin = process.env.NODE_ENV === 'production' ? productionOrigins : devOrigin;
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 const PORT = 3000;
@@ -20,8 +23,19 @@ app.use('/user', userRoute_1.default);
 app.use('/message', messageRoute_1.default);
 app.use('/chat', chatRoute_1.default);
 app.use('/', (req, res) => {
-    res.json('working');
+    res.json(`working`);
 });
+// const __dirname1 = path.resolve()
+// if(process.env.NODE_ENV === "production"){
+//   app.use(express.static(path.join(__dirname1, "/client/build")));
+//   app.get('*', (req, res) => {
+//     // res.sendFile()
+//   })
+// }else{
+//   app.use('/', (req, res) => {
+//     res.json('working')
+//   })
+// }
 if (process.env.db) {
     console.log(process.env.db);
     mongoose_1.default.connect(process.env.db, { dbName: "chat" });

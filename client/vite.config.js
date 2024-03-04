@@ -9,17 +9,17 @@ export default defineConfig({
   server: {
     proxy: {
       '/user': {
-        target: process.env.SERVER_URL,
+        target: "https://echochamber-u8cd.onrender.com/",
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/chat': {
-        target:  process.env.SERVER_URL,
+        target:  "https://echochamber-u8cd.onrender.com/",
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
       '/message': {
-        target:  process.env.SERVER_URL,
+        target:  "https://echochamber-u8cd.onrender.com/",
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       },
